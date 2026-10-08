@@ -26,18 +26,44 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:User's name and age
-# 2. Process: Concatenate two information that i send
-# 3. Out:concatenated string
-# 4. My two fields, and what I would do with them: print the user's name and age to the console
+# 1. In: the name of a person signing up, and the number of guests they bring (typed as text).
+# 2. Process: the number of guests is converted from text to a whole number with int(),
+#    then 1 is added to count the person themself, so we get the total seats to book.
+# 3. Out: a confirmation sentence with the person's name and the number of seats reserved.
+# 4. My two fields, and what I would do with them:
+#    A registration form for a company event (afterwork, seminar). The name is used to
+#    greet the person and put them on the guest list; the number of guests is used to
+#    know how many seats and meals to order from the caterer.
 
 
 # Your code below
-name = input("Enter your name:")
-age = input("Enter your age:")
 
-print("The user's name is:", name)
-print("The user's age is:", age)
+# Ask for the name of the person who registers (input always gives back text)
+name = input("Your name: ")
+
+# Ask how many guests they bring, and turn the text into a number with int(),
+# otherwise "2" + 1 crashes with a TypeError (you cannot add text and a number)
+guests = int(input("Number of guests you bring: "))
+
+# Add the person themself to their guests to get the seats to reserve
+seats = guests + 1
+
+# Show the confirmation sentence that uses both pieces of information
+print(f"Thank you {name}, {seats} seat(s) are reserved for you and your guests.")
 
 
-print("The user name is," + name + " and the user's age is ", age)
+# CHECK IT YOURSELF
+# Normal run: name "Mathis", guests "2"
+#   -> "Thank you Mathis, 3 seat(s) are reserved for you and your guests."  As expected.
+# Before adding int(): guests + 1 gave
+#   TypeError: can only concatenate str (not "int") to str
+#   because input() returns the text "2", not the number 2.
+# Empty line for the name: no error, it prints "Thank you , 3 seat(s)..." with a blank name.
+# A space for the name: no error either, it prints "Thank you  , 3 seat(s)..." (looks empty).
+# Empty line for the guests: crash,
+#   ValueError: invalid literal for int() with base 10: ''
+# A space for the guests: crash, ValueError: invalid literal for int() with base 10: ' '
+# Text instead of a number ("two"): crash,
+#   ValueError: invalid literal for int() with base 10: 'two'
+# Conclusion: the name accepts anything, even nothing; the number crashes on anything
+# that is not digits. Not fixed yet, as the brief asks.

@@ -24,10 +24,44 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
+# 1. In: one sentence typed by the user (text, possibly with extra spaces and mixed capitals).
+# 2. Process: the same sentence goes through four string methods, each giving a new version.
+#    The original sentence is never changed, because strings in Python cannot be modified.
+# 3. Out: four lines, each showing one transformed version of the sentence.
 # 4. My four transformations, and when each is useful:
+#    - strip(): clean a value typed in a form before saving it (no invisible spaces in a database).
+#    - upper(): write a name or code in capitals, like a surname on an official document or a badge.
+#    - title(): turn a title or product name into a clean heading, capital on each word.
+#    - lower() + replace(" ", "_"): build a file name or URL from a sentence (no spaces, no capitals).
 
 
 # Your code below
+
+# Ask the user for a sentence (kept exactly as typed, spaces included)
+sentence = input("Type a sentence: ")
+
+# 1. Remove the spaces at the start and the end; repr() shows the quotes so we can see them
+print("strip()  :", repr(sentence.strip()))
+
+# 2. Put everything in capitals, without cleaning first, to see that spaces are kept
+print("upper()  :", repr(sentence.upper()))
+
+# 3. Clean the ends, then give each word a capital first letter
+print("title()  :", repr(sentence.strip().title()))
+
+# 4. Clean the ends, put everything in lowercase, then replace spaces with "_" to get a file name
+print("file name:", repr(sentence.strip().lower().replace(" ", "_")))
+
+
+# CHECK IT YOURSELF
+# Test sentence: "   welcome to the Marketing team   " (3 spaces at each end, capital M in the middle)
+# strip()   -> 'welcome to the Marketing team'
+#    Expected: spaces at both ends are gone, the capital M is untouched (strip only touches the ends).
+# upper()   -> '   WELCOME TO THE MARKETING TEAM   '
+#    Expected for the capitals, but the spaces are still there: upper() does not clean,
+#    so in real use I would call strip() first.
+# title()   -> 'Welcome To The Marketing Team'
+#    Mostly expected. "To" and "The" also get a capital, which a real English title would not do.
+# file name -> 'welcome_to_the_marketing_team'
+#    Expected: the M became lowercase, no "_" at the ends because strip() ran first.
+#    Without strip() it would have started and ended with "___".
