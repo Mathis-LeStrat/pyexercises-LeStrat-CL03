@@ -24,10 +24,25 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
-# 4. What happens on 0, on a negative number, on a very large number:
+# 1. In: a whole number N typed by the user
+# 2. Process: for each number from 1 to N, I check the remainder of the division by 2 (% 2)
+# 3. Out:one line per number saying "is odd" or "is even"
+# 4. What happens on 0, on a negative number, on a very large number: #    0 or negative: a message asks for a number bigger than 0, because "from 1 to N" makes no sense.     Bigger than 100: a message says it is too big, nobody wants to read 5000 lines.
+
 
 
 # Your code below
+n = int(input("Type a number N: "))
+
+if n <= 0:
+    print("Please type a number bigger than 0.")
+
+elif n > 100:
+    print("Too big: please type a number up to 100.")
+
+else:
+    for i in range(1, n + 1):
+        if i % 2 == 0:
+            print(i, "is even")
+        else:
+            print(i, "is odd")

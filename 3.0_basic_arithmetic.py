@@ -24,10 +24,25 @@ DELIVERABLE
     This file, with your comments and your code.
 """
 
-# 1. In:
-# 2. Process:
-# 3. Out:
-# 4. What happens when the second number is zero, and why:
+# 1. In: two whole numbers typed by the user
+# 2. Process: the text is turned into numbers with int(), then I do + - * /
+# 3. Out: the four results, one per line
+# 4. What happens when the second number is zero, and why: I show a message instead of the division result. The other three operations still work with 0, so there is no reason to stop the program.
 
 
 # Your code below
+
+# Ask the user for two whole numbers
+a = int(input("First number: "))
+b = int(input("Second number: "))
+
+# Show addition, subtraction and multiplication
+print(a, "+", b, "=", a + b)
+print(a, "-", b, "=", a - b)
+print(a, "*", b, "=", a * b)
+
+# Show the division only if the second number is not zero
+if b == 0:
+    print("Division impossible: you cannot divide by zero.")
+else:
+    print(a, "/", b, "=", a / b)
